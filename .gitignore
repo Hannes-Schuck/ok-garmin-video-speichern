@@ -1,0 +1,5 @@
+.venv/
+
+# Model files and directories
+vosk-model*/
+vosk-model*.zip
