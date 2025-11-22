@@ -1,12 +1,18 @@
 import os
+import sys
 import difflib
 import sounddevice as sd
 import vosk
 import queue
 import json
 
-# Vosk model
-model_path = "vosk-model-de-0.21"
+if getattr(sys, 'frozen', False):
+    # when executable
+    base_path = sys._MEIPASS
+else:
+    base_path = os.path.dirname(__file__)
+
+model_path = os.path.join(base_path, "vosk-model-de-0.21")
 
 # signals to interact with gpu-screen-recorder (https://git.dec05eba.com/gpu-screen-recorder/about/)
 save_command = "pkill -SIGUSR1 -f gpu-screen-recorder"

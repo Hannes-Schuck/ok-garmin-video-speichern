@@ -37,3 +37,13 @@ Tested on CachyOS (6.17.8-2-cachyos)
 Since the communication between the script and the screen recorder uses signals, there are a few more available under `gpu-screen-recorder --help`
 
 (when installed as flatpak: `/var/lib/flatpak/app/com.dec05eba.gpu_screen_recorder/current/<id>/files/bin/gpu-screen-recorder`)
+
+## Create executable binary
+
+`pip install pyinstaller`
+
+Adjust according to the used versions
+
+`pyinstaller --onefile --add-data "vosk-model-de-0.21:vosk-model-de-0.21" --add-binary ".venv/lib/python3.13/site-packages/vosk/libvosk.so:vosk" main.py`
+
+Executable should be created in `./dist/`

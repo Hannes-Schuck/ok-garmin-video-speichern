@@ -3,3 +3,8 @@
 # Model files and directories
 vosk-model*/
 vosk-model*.zip
+
+# build files
+build/
+dist/
+main.spec
