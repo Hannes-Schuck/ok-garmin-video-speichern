@@ -50,7 +50,7 @@ def execute_command(command):
     try:
         subprocess.run(command, shell=True, env=env, check=True)
     except subprocess.CalledProcessError as e:
-        print(f"Befehl fehlgeschlagen: {e}")
+        print(f"Command failed: {e}")
 
 def listen_for_voice_command():
     try:
