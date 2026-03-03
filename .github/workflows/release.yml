@@ -44,9 +44,9 @@ jobs:
 
       - name: Copy license files into dist
         run: |
-          cp LICENSE NOTICE dist/ || true
+          cp LICENSE NOTICE dist/
           mkdir -p dist/licenses
-          cp licenses/vosk-Apache-2.0.txt dist/licenses/ || true
+          cp licenses/vosk-Apache-2.0.txt dist/licenses/
 
       - name: Create archive
         run: |
