@@ -49,8 +49,10 @@ Adjust according to the used versions
 Executable should be created in `./dist/`
 
 # Copyright Notice
-This application includes the Vosk German speech recognition model
-"vosk-model-de-0.21", developed by Alpha Cephei Inc.
-Licensed under the Apache License, Version 2.0.
-https://alphacephei.com/vosk/models
-https://www.apache.org/licenses/LICENSE-2.0
+
+This application includes the Vosk German speech recognition model "vosk-model-de-0.21" and the Vosk speech-to-text library,
+developed by Alpha Cephei Inc., licensed under the Apache License, Version 2.0:  
+https://alphacephei.com/vosk/models  
+https://www.apache.org/licenses/LICENSE-2.0  
+
+The full license text can be found in [`licenses/vosk-Apache-2.0.txt`](licenses/vosk-Apache-2.0.txt).
