@@ -38,6 +38,7 @@ jobs:
       - name: Build binary with PyInstaller
         run: |
           pyinstaller --onefile \
+            --name ok-garmin-video-speichern \
             --add-data "vosk-model-de-0.21:vosk-model-de-0.21" \
             --add-binary "${{ steps.findlib.outputs.lib }}:vosk" \
             main.py
