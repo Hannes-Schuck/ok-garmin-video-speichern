@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - 'v*.*.*'
-    branches:
-      - 'feature/release-pipeline'
 
 jobs:
   build-linux:
@@ -43,11 +41,13 @@ jobs:
             --add-data "vosk-model-de-0.21:vosk-model-de-0.21" \
             --add-binary "${{ steps.findlib.outputs.lib }}:vosk" \
             main.py
+
       - name: Copy license files into dist
         run: |
           cp LICENSE NOTICE dist/ || true
           mkdir -p dist/licenses
           cp licenses/vosk-Apache-2.0.txt dist/licenses/ || true
+
       - name: Create archive
         run: |
           tar czvf ok-garmin-video-speichern.tar.gz -C dist .
