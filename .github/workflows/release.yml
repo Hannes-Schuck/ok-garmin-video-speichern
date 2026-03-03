@@ -58,3 +58,10 @@ jobs:
         with:
           name: ok-garmin-video-speichern
           path: ok-garmin-video-speichern.tar.gz
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ok-garmin-video-speichern.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
