@@ -5,6 +5,7 @@ import sounddevice as sd
 import vosk
 import queue
 import json
+import subprocess
 
 if getattr(sys, 'frozen', False):
     # when executable
@@ -43,7 +44,13 @@ def find_best_match(spoken, commands, threshold=0.8):
     return matches[0] if matches else None
 
 def execute_command(command):
-    os.system(command)
+    # execute the command with controlled LD_LIBRARY_PATH to prevent library conflicts
+    env = os.environ.copy()
+    env["LD_LIBRARY_PATH"] = "/usr/lib:/lib:/usr/lib64:/bin"
+    try:
+        subprocess.run(command, shell=True, env=env, check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed: {e}")
 
 def listen_for_voice_command():
     try:

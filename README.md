@@ -4,6 +4,12 @@ A simple python script that uses speech recognition to save a replay using [gpu-
 
 A similar repository can be found [here](https://github.com/lorberry/ok-garmin-video-speichern) (where even the original sounds are used).
 
+## Download
+
+Downloads are available in the [Releases](https://github.com/Hannes-Schuck/ok-garmin-video-speichern/releases) section.
+The provided binaries are built on `ubuntu-latest`, which means they might not work on older Linux systems.
+If you encounter any issues, it is recommended to build the application manually as described below.
+
 ## Setup
 
 Tested on CachyOS (6.17.8-2-cachyos)
@@ -47,3 +53,12 @@ Adjust according to the used versions
 `pyinstaller --onefile --add-data "vosk-model-de-0.21:vosk-model-de-0.21" --add-binary ".venv/lib/python3.13/site-packages/vosk/libvosk.so:vosk" main.py`
 
 Executable should be created in `./dist/`
+
+## Copyright Notice
+
+This application includes the Vosk German speech recognition model "vosk-model-de-0.21" and the Vosk speech-to-text library,
+developed by Alpha Cephei Inc., licensed under the Apache License, Version 2.0:  
+https://alphacephei.com/vosk/models  
+https://www.apache.org/licenses/LICENSE-2.0  
+
+The full license text can be found in [`licenses/vosk-Apache-2.0.txt`](licenses/vosk-Apache-2.0.txt).
