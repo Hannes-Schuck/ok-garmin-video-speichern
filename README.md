@@ -47,3 +47,10 @@ Adjust according to the used versions
 `pyinstaller --onefile --add-data "vosk-model-de-0.21:vosk-model-de-0.21" --add-binary ".venv/lib/python3.13/site-packages/vosk/libvosk.so:vosk" main.py`
 
 Executable should be created in `./dist/`
+
+# Copyright Notice
+This application includes the Vosk German speech recognition model
+"vosk-model-de-0.21", developed by Alpha Cephei Inc.
+Licensed under the Apache License, Version 2.0.
+https://alphacephei.com/vosk/models
+https://www.apache.org/licenses/LICENSE-2.0

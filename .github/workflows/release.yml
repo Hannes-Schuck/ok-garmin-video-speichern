@@ -1,0 +1,55 @@
+name: PyInstaller Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+    branches:
+      - 'feature/release-pipeline'
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python (3.11)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Download vosk-model
+        run: |
+          wget https://alphacephei.com/vosk/models/vosk-model-de-0.21.zip
+          unzip vosk-model-de-0.21.zip
+
+      - name: Find libvosk.so
+        id: findlib
+        run: |
+          echo "lib=$(python -c 'import vosk; import os; print(os.path.join(os.path.dirname(vosk.__file__), "libvosk.so"))')" >> $GITHUB_OUTPUT
+
+      - name: Build binary with PyInstaller
+        run: |
+          pyinstaller --onefile \
+            --add-data "vosk-model-de-0.21:vosk-model-de-0.21" \
+            --add-binary "${{ steps.findlib.outputs.lib }}:vosk" \
+            main.py
+
+      - name: Create archive
+        run: |
+          tar czvf ok-garmin-video-speichern.tar.gz -C dist .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ok-garmin-video-speichern
+          path: ok-garmin-video-speichern.tar.gz
